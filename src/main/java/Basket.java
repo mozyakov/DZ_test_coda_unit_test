@@ -25,9 +25,10 @@ public class Basket {
         this.prices = prices;
         this.quantities = new int[goods.length];
     }
-    public void addToCart(int productNum, int amount) {quantities[productNum] += amount;}
+    public void addToCart(int productNum, int amount) { //метод добавления amount штук продукта номер productNum в корзину;
+        quantities[productNum] += amount;}
 
-    public void printCart() {
+    public void printCart() { //метод вывода на экран покупательской корзины.
         int totalPrice = 0;
         System.out.println("Список покупок:");
         for(int i = 0; i < goods.length; i ++) {
@@ -40,7 +41,7 @@ public class Basket {
         System.out.printf("Итого: %dp", totalPrice);
     }
 
-    public void saveTxtFile(File textFile) throws FileNotFoundException {
+    public void saveTxtFile(File textFile) throws FileNotFoundException { //метод сохранения корзины в текстовый файл;
         try(PrintWriter out = new PrintWriter(textFile)) {
             //for (String good : goods) { //проход по товарам  ниже вариант без циклов for each
             //    out.print(good + " ");
@@ -66,7 +67,7 @@ public class Basket {
         }
     }
 
-    public static Basket loadFromTxtFile(File textFile) {
+    public static Basket loadFromTxtFile(File textFile) { //статический(!) метод восстановления объекта корзины из текстового файла
         Basket basket = new Basket();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile))) {
             String goodsStr = bufferedReader.readLine();
