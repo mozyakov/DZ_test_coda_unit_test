@@ -46,7 +46,7 @@ public class Basket implements Serializable {
         System.out.printf("Итого: %dp", totalPrice);
     }
 
-    public void saveTxt(File textFile) throws FileNotFoundException {  //сохранения корзины в текстовый файл
+    public void saveTxtFile(File textFile) throws FileNotFoundException {  //сохранения корзины в текстовый файл
         try(PrintWriter out = new PrintWriter(textFile)) {
             for (String good : goods) { //проход по товарам
                 out.print(good + " ");

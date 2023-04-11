@@ -1,6 +1,5 @@
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import java.io.File;
@@ -45,7 +44,7 @@ public class Main {
             if(settings.isSave) {
                 switch (settings.saveFormat) {
                     case "json" -> basket.saveJSON(saveFile);
-                    case "txt" -> basket.saveTxt(saveFile);
+                    case "txt" -> basket.saveTxtFile(saveFile);
                 }
             }
         }
