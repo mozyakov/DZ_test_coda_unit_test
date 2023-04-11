@@ -29,9 +29,11 @@ public class Basket implements Serializable {
         this.prices = prices;
         this.quantities = new int[goods.length];
     }
-    public void addToCart(int productNum, int amount) {quantities[productNum] += amount;}
 
-    public void printCart() {
+    public void addToCart(int productNum, int amount) {  //добавление amount штук продукта номер productNum в корзину;
+        quantities[productNum] += amount;}
+
+    public void printCart() {   //вывод на экран покупательской корзины.
         int totalPrice = 0;
         System.out.println("Список покупок:");
         for(int i = 0; i < goods.length; i ++) {
@@ -44,7 +46,7 @@ public class Basket implements Serializable {
         System.out.printf("Итого: %dp", totalPrice);
     }
 
-    public void saveTxt(File textFile) throws FileNotFoundException {
+    public void saveTxt(File textFile) throws FileNotFoundException {  //сохранения корзины в текстовый файл
         try(PrintWriter out = new PrintWriter(textFile)) {
             for (String good : goods) { //проход по товарам
                 out.print(good + " ");
@@ -60,7 +62,7 @@ public class Basket implements Serializable {
         }
     }
 
-    public static Basket loadFromTxtFile(File textFile) {
+    public static Basket loadFromTxtFile(File textFile) {  //статический восстановление объекта корзины из текстового файла
         Basket basket = new Basket();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile))) {
             String goodsStr = bufferedReader.readLine();
