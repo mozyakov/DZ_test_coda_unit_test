@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BasketTest {
@@ -21,7 +20,7 @@ class BasketTest {
         int[] actual = basket.getQuantities();   //полученный результат
         int[] expected = {1, 1, 1};             //ожидаемый
 
-        Assertions.assertArrayEquals(expected, actual); //3 - сверка ожидаемого с получившемся
+        Assertions.assertArrayEquals(expected, actual); //3 - сверка ожидаемого с получившимся
     }
 
 

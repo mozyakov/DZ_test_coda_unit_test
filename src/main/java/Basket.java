@@ -25,7 +25,7 @@ public class Basket {
         this.prices = prices;
         this.quantities = new int[goods.length];
     }
-    public void addToCart(int productNum, int amount) { //метод добавления amount штук продукта номер productNum в корзину;
+    public void addToCart(int productNum, int amount) { //метод добавления amount(штук продукта) номер productNum в корзину;
         quantities[productNum] += amount;}
 
     public void printCart() { //метод вывода на экран покупательской корзины.
@@ -55,8 +55,7 @@ public class Basket {
             //    out.print(quantity + " ");
             //}
 
-            //собрать строку, записать её в файл
-            out.println(String.join(" ", goods));
+            out.println(String.join(" ", goods)); //собрать строку, записать её в файл
 
             out.println(String.join(" ", Arrays.stream(prices) //преобразовать массив интов в массив строк
                     .mapToObj(String::valueOf) //строки переводим в числа
