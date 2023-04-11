@@ -24,6 +24,14 @@ class BasketTest {
     }
     @Test
     public void testPrintCart() {
+        int totalPrice = 0;
+        final String rrr = ("Итого: " + totalPrice);
+        String[] products = {"Хлеб", "Квас", "Мясо"}; //1 - подготовка
+        int[] prices = {10, 20, 30};                  //1 - подготовка
+        Basket basket = new Basket(products, prices);
+
+        
+
 
     }
 
