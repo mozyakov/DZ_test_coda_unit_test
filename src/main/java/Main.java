@@ -1,8 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.io.FileWriter;
 import java.io.File;
-import java.io.IOException;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
@@ -34,7 +32,7 @@ public class Main {
             int productNumber = Integer.parseInt(parts[0]) - 1; //номер товара
             int productCount = Integer.parseInt(parts[1]); //кол-во товара
             basket.addToCart(productNumber, productCount);
-            basket.saveTxt(saveFile);
+            basket.saveTxtFile(saveFile);
         }
 
         basket.printCart();

@@ -40,7 +40,7 @@ public class Basket {
         System.out.printf("Итого: %dp", totalPrice);
     }
 
-    public void saveTxt(File textFile) throws FileNotFoundException {
+    public void saveTxtFile(File textFile) throws FileNotFoundException {
         try(PrintWriter out = new PrintWriter(textFile)) {
             //for (String good : goods) { //проход по товарам  ниже вариант без циклов for each
             //    out.print(good + " ");

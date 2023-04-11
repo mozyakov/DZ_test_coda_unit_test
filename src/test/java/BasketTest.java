@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BasketTest {
@@ -21,16 +19,7 @@ class BasketTest {
 
         Assertions.assertArrayEquals(expected, actual); //3 - сверка ожидаемого с получившемся
     }
-//    @Test
-//    public void testAddToCart() {
-//        int productNum = 0;
-//        int amount = 0;
-//        int [] quantities1 = {0};
-//
-//        int quantities[productNum] += amount;
-//        //basket.addToCart(0, 1);  //2 - шаги теста, добавляем продукты.
-//
-//    }
+
 
 
     @Test
