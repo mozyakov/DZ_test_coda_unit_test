@@ -18,7 +18,6 @@ public class Main {
         }
 
         while(true) {
-            //showPrice();
             System.out.println("Список возможных товаров для покупки");
             for (int i = 0; i < products.length; i++) {
                 System.out.println(products[i]  + " " + prices[i] + "руб/шт");
@@ -34,14 +33,8 @@ public class Main {
             basket.addToCart(productNumber, productCount);
             basket.saveTxtFile(saveFile);
         }
-
         basket.printCart();
     }
 
-//    public static void showPrice() { //содержимое этого метода можно положить в while, тогда этот метод не потребуется
-//        System.out.println("Список возможных товаров для покупки");
-//        for (int i = 0; i < products.length; i++) {
-//            System.out.println(products[i]  + " " + prices[i] + "руб/шт");
-//        }
-//    }
+
 }
