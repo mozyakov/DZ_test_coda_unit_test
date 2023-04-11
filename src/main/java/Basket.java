@@ -1,11 +1,7 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.*;
 import java.util.Arrays;
 
-public class Basket implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Basket {
     private String[] goods;
     private int[] prices;
     private int[] quantities;
@@ -29,11 +25,9 @@ public class Basket implements Serializable {
         this.prices = prices;
         this.quantities = new int[goods.length];
     }
+    public void addToCart(int productNum, int amount) {quantities[productNum] += amount;}
 
-    public void addToCart(int productNum, int amount) {  //добавление amount штук продукта номер productNum в корзину;
-        quantities[productNum] += amount;}
-
-    public void printCart() {   //вывод на экран покупательской корзины.
+    public void printCart() {
         int totalPrice = 0;
         System.out.println("Список покупок:");
         for(int i = 0; i < goods.length; i ++) {
@@ -46,23 +40,33 @@ public class Basket implements Serializable {
         System.out.printf("Итого: %dp", totalPrice);
     }
 
-    public void saveTxtFile(File textFile) throws FileNotFoundException {  //сохранения корзины в текстовый файл
+    public void saveTxt(File textFile) throws FileNotFoundException {
         try(PrintWriter out = new PrintWriter(textFile)) {
-            for (String good : goods) { //проход по товарам
-                out.print(good + " ");
-            }
-            out.println();
-            for (int price : prices) { //проход по ценам
-                out.print(price + " ");
-            }
-            out.println();
-            for (int quantity : quantities) { //проход по кол-ву
-                out.print(quantity + " ");
-            }
+            //for (String good : goods) { //проход по товарам  ниже вариант без циклов for each
+            //    out.print(good + " ");
+            //}
+            //out.println();
+            //for (int price : prices) { //проход по ценам
+            //    out.print(price + " ");
+            //}
+            //out.println();
+            //for (int quantity : quantities) { //проход по кол-ву
+            //    out.print(quantity + " ");
+            //}
+
+            //собрать строку, записать её в файл
+            out.println(String.join(" ", goods));
+
+            out.println(String.join(" ", Arrays.stream(prices) //преобразовать массив интов в массив строк
+                    .mapToObj(String::valueOf) //строки переводим в числа
+                    .toArray(String[]::new))); //конструктор массива строк
+            out.println(String.join(" ", Arrays.stream(quantities)
+                    .mapToObj(String::valueOf)
+                    .toArray(String[]::new)));
         }
     }
 
-    public static Basket loadFromTxtFile(File textFile) {  //статический восстановление объекта корзины из текстового файла
+    public static Basket loadFromTxtFile(File textFile) {
         Basket basket = new Basket();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile))) {
             String goodsStr = bufferedReader.readLine();
@@ -80,51 +84,6 @@ public class Basket implements Serializable {
                     .toArray();
         }
         catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return basket;
-    }
-
-    public void saveBin(File file) {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(this);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static Basket loadFromBinFile(File file) {
-        Basket basket = null;
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            basket = (Basket) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return basket;
-    }
-
-    public void saveJSON(File file) {
-        try(PrintWriter writer = new PrintWriter(file)) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create(); //чтобы разбивать строку на столбики
-            String json = gson.toJson(this);
-            writer.print(json);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static Basket loadFromJSONFile(File file) {
-        Basket basket = null;
-        try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            StringBuilder builder = new StringBuilder();
-            String line = null;   //важно объявить переменную до первого применения
-            while((line = reader.readLine()) != null) {
-                builder.append(line); //добавление очередной строки
-            }
-            Gson gson = new Gson(); //создал объект Gson
-            basket = gson.fromJson(builder.toString(), Basket.class);   //де сериализация объекта
-        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return basket;
