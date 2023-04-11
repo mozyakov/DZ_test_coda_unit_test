@@ -22,7 +22,10 @@ class BasketTest {
 
         Assertions.assertArrayEquals(expected, actual); //3 - сверка ожидаемого с получившимся
     }
+    @Test
+    public void testPrintCart() {
 
+    }
 
 
     @Test
