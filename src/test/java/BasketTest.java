@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BasketTest {
@@ -14,11 +16,24 @@ class BasketTest {
         basket.addToCart(1, 1);
         basket.addToCart(2, 1);
 
-        int[] actual = basket.getQuantities();
-        int[] expected = {1, 1, 1};
+        int[] actual = basket.getQuantities();   //полученный результат
+        int[] expected = {1, 1, 1};             //ожидаемый
 
         Assertions.assertArrayEquals(expected, actual); //3 - сверка ожидаемого с получившемся
-
     }
+    @Test
+    public void testLoadFromTxtFile() {
+        Basket basket = Basket.loadFromTxtFile(new File("src/test/resources/test_basket.txt"));
+        String[] actualGoods = basket.getGoods();
+        String[] expectedGoods = {"Хлеб", "Квас", "Мясо"};
+        Assertions.assertArrayEquals(expectedGoods, actualGoods);
+
+        int[] actualPrices = basket.getPrices();
+        int[] expectedPrices = {10, 20, 30};
+        Assertions.assertArrayEquals(expectedPrices, actualPrices);
+    }
+    
+
+
 
 }
