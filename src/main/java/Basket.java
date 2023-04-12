@@ -26,7 +26,7 @@ public class Basket {
         this.prices = prices;
         this.quantities = new int[goods.length];
     }
-    public int averagePrice() { //средняя цена всего представленного ассортимента
+    public int averagePriceAssortment() { //средняя цена представленного ассортимента
         int totalPrice = 0;
         for (int price : prices) {
             totalPrice += price;

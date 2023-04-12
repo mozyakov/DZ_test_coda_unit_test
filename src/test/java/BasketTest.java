@@ -22,15 +22,18 @@ class BasketTest {
 
         Assertions.assertArrayEquals(expected, actual); //3 - сверка ожидаемого с получившимся
     }
-//    @Test
-//    public void testPrintCart() {
-//        int totalPrice = 0;
-//        final String rrr = ("Итого: " + totalPrice);
-//        String[] products = {"Хлеб", "Квас", "Мясо"}; //1 - подготовка
-//        int[] prices = {10, 20, 30};                  //1 - подготовка
-//        Basket basket = new Basket(products, prices);
-//    }
 
+    @Test
+    public void testAveragePriceAssortment() {
+        Basket basket = new Basket(new String[]{"Хлеб", "Квас", "Мясо"}, new int[]{10, 20, 30});
+        int[] prices = {10, 20, 30};
+
+        int actual = basket.averagePriceAssortment();
+        //int[] actual = basket.getPrices();
+        int expected = (10+20+30) / prices.length;
+
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void testLoadFromTxtFile() {
