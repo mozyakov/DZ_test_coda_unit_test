@@ -24,7 +24,7 @@ class BasketTest {
     }
 
     @Test
-    public void testAveragePriceAssortment() {
+    public void testAveragePriceAssortment() { //средняя цена представленного ассортимента
         Basket basket = new Basket(new String[]{"Хлеб", "Квас", "Мясо"}, new int[]{10, 20, 30});
         int[] prices = {10, 20, 30};
 
