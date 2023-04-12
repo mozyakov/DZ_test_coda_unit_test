@@ -34,6 +34,8 @@ public class Main {
             basket.saveTxtFile(saveFile);
         }
         basket.printCart();
+        System.out.println();
+        System.out.println("Средняя цена всего представленного ассортимента = " + basket.averagePrice());
     }
 
 

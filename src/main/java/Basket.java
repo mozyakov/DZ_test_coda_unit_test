@@ -20,11 +20,20 @@ public class Basket {
 
     public Basket() {
     }
+
     public Basket(String[] goods, int[] prices) {
         this.goods = goods;
         this.prices = prices;
         this.quantities = new int[goods.length];
     }
+    public int averagePrice() { //средняя цена всего представленного ассортимента
+        int totalPrice = 0;
+        for (int price : prices) {
+            totalPrice += price;
+        }
+        return totalPrice / prices.length;
+    }
+
     public void addToCart(int productNum, int amount) { //метод добавления amount(штук продукта) номер productNum в корзину;
         quantities[productNum] += amount;}
 
@@ -88,6 +97,7 @@ public class Basket {
         }
         return basket;
     }
+
 
 }
 
